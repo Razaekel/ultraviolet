@@ -357,6 +357,18 @@ macro_rules! vec3s {
             pub fn as_mut_ptr(&mut self) -> *mut $t {
                 self as *mut $n as *mut $t
             }
+
+            /// Returns a new vector with all elements rounded down.
+            #[inline]
+            pub fn floor(&self) -> Self {
+                Self::new(self.x.floor(), self.y.floor(), self.z.floor())
+            }
+
+            /// Returns a new vector with all elements rounded up.
+            #[inline]
+            pub fn ceil(&self) -> Self {
+                Self::new(self.x.ceil(), self.y.ceil(), self.z.ceil())
+            }
         }
 
         impl EqualsEps for $n {
